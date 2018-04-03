@@ -280,10 +280,11 @@ namespace Microsoft.Bot.Connector
 
         private bool ShouldSetToken(HttpRequestMessage request)
         {
-            if (TrustedUri(request.RequestUri))
-            {
+            //skip checking trusted uri, due problem with truested uri list
+            //if (TrustedUri(request.RequestUri))
+            //{
                 return true;
-            }
+            //}
 
 #if NET45
             Trace.TraceWarning($"Service url {request.RequestUri.Authority} is not trusted and JwtToken cannot be sent to it.");
